@@ -99,6 +99,9 @@ ou utilize uma extensão como **Live Server**
 O projeto está configurado para deploy na **Vercel**.
 
 Pode realizar os testes nesse link aqui:
+[task-master.vercel.app/](https://task-master-six-rho.vercel.app/)
+
+Lembrando que para o site funcionar, o `json-server db.json` deverá estar rodando localmente.
 
 ---
 
@@ -113,8 +116,6 @@ Pode realizar os testes nesse link aqui:
 
 * **E-mail:** [iindyh@unisagrado.com](mailto:iindyh@unisagrado.com)
 * **Senha:** Indy@123
-
----
 
 ---
 
