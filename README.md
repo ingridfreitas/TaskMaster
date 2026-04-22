@@ -26,7 +26,7 @@ O usuário comum possui acesso restrito às suas próprias tarefas:
 
 ### 🛠️ Área do Administrador
 
-O administrador possui controle total do sistema, com acesso a três abas principais:
+O Administrador possui controle total do sistema, com acesso a três abas principais:
 
 #### 📌 Lista de Tarefas
 
