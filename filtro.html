@@ -3,33 +3,43 @@
 <head>
   <meta charset="UTF-8">
   <title>Filtros de Tarefas</title>
-  <link rel="stylesheet" href="style.css">
+
+  <!-- CSS -->
+  <link rel="stylesheet" href="filtro.css">
 </head>
 <body>
 
-<h1>Filtros de Tarefas</h1>
+  <div class="container">
 
-<div class="card filters">
-  <input type="text" id="search" placeholder="Buscar tarefa...">
+    <h1>Filtros de Tarefas</h1>
 
-  <select id="status">
-    <option value="All">Todos Status</option>
-    <option value="Pending">Pendente</option>
-    <option value="In Progress">Em andamento</option>
-    <option value="Completed">Concluído</option>
-  </select>
+    <!-- Filtros -->
+    <div class="card filters">
+      <input type="text" id="search" placeholder="Buscar tarefa...">
 
-  <select id="user">
-    <option value="All">Todos Usuários</option>
-    <option value="Maria Silva">Maria Silva</option>
-    <option value="Usuário Padrão">Usuário Padrão</option>
-  </select>
+      <select id="status">
+        <option value="All">Todos Status</option>
+        <option value="Pending">Pendente</option>
+        <option value="In Progress">Em andamento</option>
+        <option value="Completed">Concluído</option>
+      </select>
 
-  <button id="resetBtn">Limpar</button>
-</div>
+      <select id="user">
+        <option value="All">Todos Usuários</option>
+        <option value="Maria Silva">Maria Silva</option>
+        <option value="Usuário Padrão">Usuário Padrão</option>
+      </select>
 
-<div id="taskList"></div>
+      <button id="resetBtn">Limpar</button>
+    </div>
 
-<script src="script.js"></script>
+    <!-- Lista de tarefas -->
+    <div id="taskList"></div>
+
+  </div>
+
+  <!-- JS -->
+  <script src="script.js"></script>
+
 </body>
 </html>

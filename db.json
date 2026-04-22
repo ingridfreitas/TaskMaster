@@ -73,6 +73,14 @@
             "senha": "Teste",
             "email": "Kelvin@unisagrado.com",
             "ingresso": "Apr 18, 2026"
+        },
+        {
+            "id": 6,
+            "nome": "Chen",
+            "nivel": "Administrador",
+            "senha": "123",
+            "email": "half.rafa0897@gmail.com",
+            "ingresso": "Apr 22, 2026"
         }
     ]
 }
