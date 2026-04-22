@@ -12,4 +12,4 @@ class Usuario {
     }
 }
 
-module.exports = Usuario;
+if (typeof module !== 'undefined') module.exports = Usuario;
