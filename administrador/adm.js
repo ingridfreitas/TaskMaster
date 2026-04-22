@@ -674,10 +674,21 @@ async function getUser() {
     usuario.innerHTML = `
         <span>${user.nome.charAt(0)}</span>
         <div class="admin">
-            <span>${user.nome}</span>
-            <span>${user.nivel}</span>
+            <span class="detalhe-user">${user.nome}</span>
+            <span class="detalhe-user">${user.nivel}</span>
         </div>
     `;
+}
+
+function abrirMenu(estado) {
+    const menu = document.querySelector(".sidebar");
+    if (estado == 'abrir') {
+        menu.style.display = "flex";
+    }
+
+    else {
+        menu.style.display = "none";
+    }
 }
 
 function logout() {

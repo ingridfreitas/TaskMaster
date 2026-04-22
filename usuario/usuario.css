@@ -9,7 +9,7 @@
     border-radius: 16px;
 }
 
-.texto{
+.texto {
     color: #fff;
 }
 
@@ -21,11 +21,11 @@
     align-items: center;
     gap: 0.5rem; /* 🔥 espaço entre ícone e texto */
 }
-h3{
+h3 {
     font-weight: 300;
 }
 
-#cardTarefa{
+#cardTarefa {
     display: flex;
     flex-direction: column;
     gap: 0.5rem;
@@ -73,7 +73,7 @@ h3{
     padding: 6px 10px;
 }
 
-.card-tarefa{
+.card-tarefa {
     width: 100%;
     box-shadow:
         0 4px 8px 0 #63636333,
@@ -89,65 +89,69 @@ h3{
     align-items: start;
 }
 
-.card-tarefa button{
+.card-detalhe {
+    display: flex;
+    gap: 1.5rem;
+}
+
+.card-tarefa button {
     padding: 2rem 3rem;
     flex-wrap: nowrap;
 }
 
-.card-icone{
+.card-icone {
     display: flex;
     align-items: center;
     border-radius: 12px;
 }
 
-.card-icone i{
+.card-icone i {
     font-size: 3rem;
     padding: 1.2rem;
 }
 
-.titulo-lista{
+.titulo-lista {
     margin: 1rem 0;
 }
 
-.icone-status i{
+.icone-status i {
     font-size: 2rem;
 }
 
-.nome-status{
+.nome-status {
     display: flex;
     gap: 2rem;
     align-items: center;
 }
 
-.botao-tarefa{
+.botao-tarefa {
     margin-left: auto;
 }
 
-.descricao{
+.descricao {
     margin: 0.7rem 0;
     width: 80%;
 }
 
-.badge-status{
+.badge-status {
     border-radius: 12px;
     padding: 0.5rem;
     display: flex;
     gap: 0.7rem;
 }
 
-.badge-pendente{
+.badge-pendente {
     color: #fba029;
     background-color: #fff5e6;
-   
 }
 
-.badge-andamento{
+.badge-andamento {
     color: #5172e1;
     background-color: #e9f2ff;
 }
 
-.badge-completa{
-    color: #367D5E;
+.badge-completa {
+    color: #367d5e;
     background-color: #edf5f2;
 }
 
@@ -262,8 +266,6 @@ h3{
     flex-shrink: 0;
 }
 
-
-
 .btn-icon-edit,
 .btn-icon-delete {
     display: flex;
@@ -279,7 +281,7 @@ h3{
 }
 
 .btn-icon-edit {
-    color: #2251B0;
+    color: #2251b0;
     background-color: #e9f2ff;
 }
 
@@ -311,7 +313,9 @@ h3{
     border-radius: 10px;
     border: none;
     cursor: pointer;
-    transition: background-color 0.2s, transform 0.15s;
+    transition:
+        background-color 0.2s,
+        transform 0.15s;
     font-size: 1.1rem;
 }
 
@@ -411,4 +415,28 @@ h3{
 
 .btn-confirmar-excluir:hover {
     background-color: #c53030;
+}
+
+@media (max-width: 1300px) {
+    .card-tarefa {
+        padding: 1rem;
+        flex-direction: column;
+    }
+}
+
+@media (max-width: 992px) {
+    .hideOnMobile {
+        display: none;
+    }
+
+    .secao-inicial {
+        display: flex;
+        flex-direction: column;
+        padding: 2rem 1rem;
+        gap: 1rem;
+    }
+
+    .descricao{
+        width: 100%;
+    }
 }
