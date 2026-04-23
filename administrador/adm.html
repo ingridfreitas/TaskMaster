@@ -10,23 +10,36 @@
     <title>TaskMaster - Admin</title>
 </head>
 <body>
+    <header class="hideOnDesktop">
+        <div class="header-logo">
+            <span class="square-check" data-lucide="square-check-big"></span>
+            <h1>TaskMaster</h1>
+        </div>
+        <span class="menu" data-lucide="menu" onclick="abrirMenu('abrir')"></span>
+    </header>
+
     <aside class="sidebar">
         <div class="sidebar-logo">
             <span class="square-check" data-lucide="square-check-big"></span>
             <h1>TaskMaster</h1>
+            <span class="hideOnDesktop btn-close-menu" onclick="abrirMenu('fechar')">&times;</span>
         </div>
         <div class="sidebar-menu">
             <button class="button-menu marcado" onclick="navigate('dashboard', this)">
                 <span data-lucide="layout-dashboard"></span>
-                <span>Dashboard</span>
+                <span class="menu-categoria">Dashboard</span>
             </button>
             <button class="button-menu" onclick="navigate('users', this)">
                 <span data-lucide="users"></span>
-                <span>Usuários</span>
+                <span class="menu-categoria">Usuários</span>
             </button>
             <button class="button-menu" onclick="navigate('myTasks', this)">
                 <span data-lucide="book-check"></span>
-                <span>Minhas Tarefas</span>
+                <span class="menu-categoria">Minhas Tarefas</span>
+            </button>
+            <button class="button-menu" onclick="navigate('filters', this)">
+                <span data-lucide="funnel"></span>
+                <span class="menu-categoria">Filtros</span>
             </button>
         </div>
         <div class="sidebar-footer">
@@ -34,7 +47,7 @@
             </div>
             <button class="log-out" onclick="logout()">
                 <span data-lucide="log-out"></span>
-                <span>Log out</span>
+                <span class="btn-logout">Log out</span>
             </button>
         </div>
     </aside>

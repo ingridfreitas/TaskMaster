@@ -1,4 +1,5 @@
-const userData = JSON.parse(localStorage.getItem('user'));
+
+const user = JSON.parse(localStorage.getItem('user'));
 const LINK_JSON = "http://localhost:3000";
 
 if (!userData) {
@@ -268,18 +269,20 @@ async function renderTarefa() {
 
         tafHTML += `
         <div class="card card-tarefa">
-            <div class="icone-status icone-andamento">
-                <span class="badge-${config.classe}" data-lucide="${config.icone}"></span>
-            </div>
-
-            <div class="tarefa">
-                <div class="nome-status">
-                    <h2 class="nome-tarefa">${task.title}</h2>
-                    <h4 class="badge-status badge-${config.classe}">${task.status}</h4>
+            <div class="card-detalhe">
+                <div class="icone-status icone-andamento">
+                    <span class="badge-${config.classe}" data-lucide="${config.icone}"></span>
                 </div>
 
-                <p class="descricao">${task.description}</p>
-                <h6 class="data-tarefa">Criado em ${task.date}</h6>
+                <div class="tarefa">
+                    <div class="nome-status">
+                        <h2 class="nome-tarefa">${task.title}</h2>
+                        <h4 class="badge-status hideOnMobile badge-${config.classe}">${task.status}</h4>
+                    </div>
+
+                    <p class="descricao">${task.description}</p>
+                    <h6 class="data-tarefa">Criado em ${task.date}</h6>
+                </div>
             </div>
 
             <div class="tarefa-acoes">
@@ -322,7 +325,7 @@ async function renderSidebarTasks() {
         html += `
             <div class="sidebar-task-item">
                 <i class="bi ${icon}" style="color: ${color}; font-size: 0.9rem;"></i>
-                <span class="sidebar-task-title">${task.title}</span>
+                <span class="sidebar-task-title menu-categoria">${task.title}</span>
             </div>
         `;
     });
@@ -340,10 +343,21 @@ async function getUser() {
     usuario.innerHTML = `
         <span>${user.nome.charAt(0)}</span>
         <div class="admin">
-            <span>${user.nome}</span>
-            <span>${user.nivel}</span>
+            <span class="detalhe-user">${user.nome}</span>
+            <span class="detalhe-user">${user.nivel}</span>
         </div>
     `;
+}
+
+function abrirMenu(estado){
+    const menu = document.querySelector(".sidebar");
+    if(estado == 'abrir'){
+        menu.style.display = "flex";
+    }
+
+    else{
+        menu.style.display = "none";
+    }
 }
 
 function logout() {
