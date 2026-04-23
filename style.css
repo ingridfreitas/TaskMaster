@@ -485,11 +485,103 @@ main {
     height: 100%;
 }
 
+
+.container-filtro {
+  width: 100%;
+}
+
+
+/* Card */
+.card-filtro {
+  background: white;
+  padding: 15px;
+  border-radius: 12px;
+  margin-bottom: 20px;
+  box-shadow: 0 3px 8px rgba(0,0,0,0.1);
+}
+
+/* Filtros em UMA LINHA */
+.filters {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  flex-wrap: nowrap; /* 🔥 força tudo em linha */
+  width: 100%;
+  overflow-x: auto; /* evita quebrar em telas menores */
+}
+
+/* Inputs */
+input, select, #resetBtn {
+  padding: 10px;
+  border-radius: 8px;
+  border: 1px solid #ccc;
+  font-size: 14px;
+}
+
+/* Campo busca maior */
+#search {
+  flex: 2;
+  min-width: 220px;
+}
+
+/* Selects */
+#status, #user {
+  flex: 1;
+  min-width: 160px;
+}
+
+/* Botão */
+#resetBtn {
+  background: #4CAF50;
+  color: white;
+  border: none;
+  cursor: pointer;
+  white-space: nowrap;
+  transition: 0.2s;
+}
+
+#resetBtn:hover {
+  background: #43a047;
+}
+
+/* Lista de tarefas */
+.task {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+/* Status */
+.status {
+  font-weight: bold;
+}
+
+.task-filter{
+    margin-top: 1rem;
+}
+
+.tarefa-filter{
+    display: grid !important;
+    grid-template-columns: 2fr 1fr;
+    justify-content: space-between;
+    align-items: center !important;
+
+    margin-bottom: 1rem;
+}
+
+.tarefa-filter .assigned{
+    margin-right: 2rem;
+}
+
 header{
     display: none;
 }
 
-@media (max-width: 1300px) {
+.hideOnDesktop{
+    display: none;
+}
+
+@media (max-width: 1200px) {
     .card-tarefa {
         padding: 1rem;
         flex-direction: column;

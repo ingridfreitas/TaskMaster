@@ -69,6 +69,10 @@ function navigate(page, button) {
         renderListTasks();
         button.classList.add("marcado");
     }
+    if (page === 'filters') {
+        renderFilters();
+        button.classList.add("marcado");
+    }
 }
 
 // ========================
@@ -666,6 +670,63 @@ async function renderUsers() {
 }
 
 // ========================
+// FILTERS PAGE
+// ========================
+async function renderFilters() {
+    const app = document.getElementById('app');
+
+    app.innerHTML = `
+        <div class="container-filtro">
+
+            <h1>Filtros de Tarefas</h1>
+            <!-- Filtros -->
+            <div class="card filters">
+                <input type="text" id="search" placeholder="Buscar tarefa...">
+
+                <select id="status">
+                    <option value="All">Todos Status</option>
+                    <option value="Pendente">Pendente</option>
+                    <option value="Em Andamento">Em andamento</option>
+                    <option value="Completa">Concluído</option>
+                </select>
+
+                <select id="user">
+                    <option value="All">Todos Usuários</option>
+                </select>
+
+                <button id="resetBtn">Limpar</button>
+            </div>
+
+            <!-- Lista de tarefas -->
+            <div id="taskListFilter" class="task-filter"></div>
+
+        </div>
+    `;
+
+    const tasks = await fetchAllTasks();
+    const users = await fetchAllUsers();
+
+    // popular usuários
+    const selectUser = document.getElementById("user");
+    selectUser.innerHTML += users.map(u =>
+        `<option value="${u.nome}">${u.nome}</option>`
+    ).join('');
+
+    // salvar globalmente
+    window.allTasks = tasks;
+    window.allUsers = users;
+
+    // render inicial
+    renderTasksFilter(tasks);
+
+    // eventos (AGORA FUNCIONA)
+    document.getElementById("search").addEventListener("input", applyFilters);
+    document.getElementById("status").addEventListener("change", applyFilters);
+    document.getElementById("user").addEventListener("change", applyFilters);
+    document.getElementById("resetBtn").addEventListener("click", resetFilters);
+}
+
+// ========================
 // USER INFO & LOGOUT
 // ========================
 async function getUser() {
@@ -678,6 +739,75 @@ async function getUser() {
             <span class="detalhe-user">${user.nivel}</span>
         </div>
     `;
+}
+
+async function renderTasksFilter(filtered) {
+    const container = document.getElementById("taskListFilter");
+    container.innerHTML = "";
+    const users = await fetchAllUsers();
+
+    if (filtered.length === 0) {
+        container.innerHTML = "<p>Nenhuma tarefa encontrada</p>";
+        return;
+    }
+
+    filtered.forEach(task => {
+        const usuario = users.find(u => u.id == task.userId);
+        const nomeUsuario = usuario ? usuario.nome : 'Não atribuído';
+        const emailUsuario = usuario ? usuario.email : '';
+        const config = statusConfig[task.status] || statusConfig["Pendente"];
+
+        const div = document.createElement("div");
+        div.className = "card card-tarefa tarefa-filter";
+
+        div.innerHTML = `
+
+        <div class="tarefa">
+            <div class="nome-status">
+                <h2 class="nome-tarefa">${task.title}</h2>
+                <h4 class="badge-status badge-${config.classe}">${task.status}</h4>
+            </div>
+
+            <p class="descricao">${task.description}</p>
+            <h6 class="data-tarefa">Criado em ${task.date}</h6>
+        </div>
+
+        <div class="assigned">
+            <div class="assigned-content">
+                <span class="assigned-name">${nomeUsuario}</span>
+                <span class="assigned-email">${emailUsuario}</span>
+            </div>
+        </div>
+    `;
+
+        container.appendChild(div);
+    });
+}
+
+function applyFilters() {
+    const search = document.getElementById("search").value.toLowerCase();
+    const status = document.getElementById("status").value;
+    const user = document.getElementById("user").value;
+
+    const filtered = window.allTasks.filter(task => {
+        const userObj = window.allUsers.find(u => u.id == task.userId);
+        const nomeUsuario = userObj ? userObj.nome : '';
+
+        return (
+            (status === "All" || task.status === status) &&
+            (user === "All" || nomeUsuario === user) &&
+            task.title.toLowerCase().includes(search)
+        );
+    });
+
+    renderTasksFilter(filtered);
+}
+
+function resetFilters() {
+    document.getElementById("search").value = "";
+    document.getElementById("status").value = "All";
+    document.getElementById("user").value = "All";
+    renderTasksFilter(window.allTasks);
 }
 
 function abrirMenu(estado) {
