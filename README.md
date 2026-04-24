@@ -26,7 +26,7 @@ O usuário comum possui acesso restrito às suas próprias tarefas:
 
 ### 🛠️ Área do Administrador
 
-O Administrador possui controle total do sistema, com acesso a três abas principais:
+O Administrador possui controle total do sistema, com acesso a quatro abas principais:
 
 #### 📌 Lista de Tarefas
 
@@ -40,6 +40,10 @@ O Administrador possui controle total do sistema, com acesso a três abas princi
 #### ✅ Minhas Tarefas
 
 * Acesso às tarefas atribuídas ao próprio administrador
+
+#### 📶 Filtros
+
+* Acesso aos filtros para verificar tarefas
 
 ---
 
@@ -59,11 +63,57 @@ O Administrador possui controle total do sistema, com acesso a três abas princi
 
 ## 🧪 Tecnologias Utilizadas
 
+### 🎨 Frontend
 * HTML5
 * CSS3
 * JavaScript (Vanilla JS)
-* json-server (fake API com `db.json`)
-* Vercel (deploy)
+
+### ⚙️ Backend
+* Node.js
+* Express.js
+* JSON Server
+* FS (File System)
+* Path
+
+### ☁️ Deploy
+* Vercel
+
+---
+
+## 🖥️ Backend
+
+A aplicação possui um backend desenvolvido com **Node.js** e **Express.js**, responsável pelo processamento das requisições e gerenciamento dos dados.
+
+O sistema utiliza os módulos nativos **fs** e **path** para manipulação de arquivos, adotando um arquivo `db.json` como banco de dados simples para persistência local, sem a necessidade de um banco externo.
+
+### 📦 Modelagem de Dados
+
+Foram criadas classes internas para organização das entidades do sistema:
+
+* **Usuario**
+* **Task**
+
+Essas classes ajudam a estruturar e padronizar os dados manipulados pela aplicação.
+
+### 🔗 API REST
+
+O backend disponibiliza uma API REST com as seguintes funcionalidades:
+
+* 🔐 Autenticação
+  * Login
+  * Recuperação de senha
+
+* 👤 Usuários
+  * Criar usuários (admin)
+  * Listar usuários
+  * Atualizar dados
+  * Remover usuários
+
+* 📋 Tarefas
+  * Criar tarefas
+  * Listar tarefas
+  * Atualizar tarefas
+  * Deletar tarefas
 
 ---
 
@@ -75,22 +125,21 @@ O Administrador possui controle total do sistema, com acesso a três abas princi
 git clone https://github.com/ingridfreitas/TaskMaster.git
 ```
 
-### 2. Instale o json-server
+### 2. Instale os pacotes de dependências
 
 ```bash
-npm install -g json-server
+npm install
 ```
 
-### 3. Inicie a API fake
+### 3. Inicie o servidor
 
 ```bash
-json-server --watch db.json --port 3000
+node server.js
 ```
 
 ### 4. Execute o projeto
 
-Abra o arquivo `index.html` no navegador
-ou utilize uma extensão como **Live Server**
+Abra o link `http://localhost:3000` no navegador
 
 ---
 
@@ -101,7 +150,7 @@ O projeto está configurado para deploy na **Vercel**.
 Pode realizar os testes nesse link aqui:
 [task-master.vercel.app/](https://task-master-six-rho.vercel.app/)
 
-Lembrando que para o site funcionar, o `json-server db.json` deverá estar rodando localmente.
+Lembrando que para o site funcionar, o `node server.js` deverá estar rodando localmente.
 
 ---
 
@@ -130,6 +179,8 @@ Lembrando que para o site funcionar, o `json-server db.json` deverá estar rodan
  ┣ 📄 style.css
  ┣ 📄 login.css
  ┣ 📄 login.js
+ ┣ 📄 server.js
+ ┣ 📄 usuarioclass.js
  ┣ 📄 db.json
  ┗ 📄 README.md
 ```
@@ -138,16 +189,8 @@ Lembrando que para o site funcionar, o `json-server db.json` deverá estar rodan
 
 ## 💡 Observações
 
-* Este projeto utiliza uma API fake (`json-server`) (Olá Rafael!), portanto não é recomendado para produção sem backend real.
-* Feito para fins de estudo e prototipação.
-
----
-
-## ✨ Melhorias Futuras
-
-* Criar backend real (Java + banco de dados)
-* Melhorar UX/UI
-* Adicionar filtros e busca de tarefas
+* Este projeto iniciou com uma API fake utilizando `json-server` e evoluiu para um backend próprio com Node.js e Express.
+* Desenvolvido para fins de estudo e prototipação.
 
 ---
 
