@@ -2,9 +2,11 @@
 const user = JSON.parse(localStorage.getItem('user'));
 const LINK_JSON = "http://localhost:3000";
 
-if (!user) {
+if (!userData) {
     window.location.href = '/index.html';
 }
+
+const user = new Usuario(userData);
 
 const statusConfig = {
     "Completa": {
